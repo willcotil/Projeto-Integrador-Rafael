@@ -4,26 +4,35 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 import com.backendpi.backend.model.Usuario;
-import com.backendpi.backend.repository.UsuarioRepository;
+import com.backendpi.backend.service.UsuarioService;
 
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioController {
 
-    private final UsuarioRepository repository;
+    private final UsuarioService service;
 
-    public UsuarioController(UsuarioRepository repository) {
-        this.repository = repository;
+    public UsuarioController(UsuarioService service) {
+        this.service = service;
     }
 
     @GetMapping
     public List<Usuario> listar() {
-        return repository.findAll();
+        return service.listar();
     }
 
     @PostMapping
     public Usuario criar(@RequestBody Usuario usuario) {
-        return repository.save(usuario);
+        return service.salvar(usuario);
     }
 
+    @GetMapping("/{id}")
+    public Usuario buscarPorId(@PathVariable Long id) {
+        return service.buscarPorId(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletar(@PathVariable Long id) {
+        service.deletar(id);
+    }
 }
