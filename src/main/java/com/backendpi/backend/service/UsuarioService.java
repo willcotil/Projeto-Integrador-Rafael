@@ -23,10 +23,6 @@ public class UsuarioService {
         return repository.save(usuario);
     }
 
-    public Usuario buscarPorId(Long id) {
-        return repository.findById(id).orElse(null);
-    }
-
     public void deletar(Long id) {
         repository.deleteById(id);
     }
