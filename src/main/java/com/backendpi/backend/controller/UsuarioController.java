@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/usuarios")
+@CrossOrigin(origins = "*")
 public class UsuarioController {
 
     private final UsuarioService service;
@@ -30,5 +31,10 @@ public class UsuarioController {
     @DeleteMapping("/{id}")
     public void deletar(@PathVariable Long id) {
         service.deletar(id);
+    }
+
+    @PostMapping("/login")
+    public Usuario login(@RequestBody Usuario usuario) {
+        return service.login(usuario.getEmail(), usuario.getSenha());
     }
 }
