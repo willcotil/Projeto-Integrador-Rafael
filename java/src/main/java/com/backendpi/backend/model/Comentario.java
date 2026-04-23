@@ -11,9 +11,7 @@ public class Comentario {
     private Long id;
 
     private String conteudo;
-
     private Long usuarioId;
-
     private Long postId;
 
     public Long getId() { return id; }

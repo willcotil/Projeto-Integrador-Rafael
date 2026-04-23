@@ -1,7 +1,7 @@
 package com.backendpi.backend.controller;
 
 import com.backendpi.backend.model.Comunidade;
-import com.backendpi.backend.repository.ComunidadeRepository;
+import com.backendpi.backend.service.ComunidadeService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,33 +10,29 @@ import java.util.List;
 @RequestMapping("/comunidades")
 public class ComunidadeController {
 
-    private final ComunidadeRepository repository;
+    private final ComunidadeService service;
 
-    public ComunidadeController(ComunidadeRepository repository) {
-        this.repository = repository;
+    public ComunidadeController(ComunidadeService service) {
+        this.service = service;
     }
 
     @GetMapping
     public List<Comunidade> listar() {
-        return repository.findAll();
+        return service.listar();
     }
 
     @PostMapping
     public Comunidade criar(@RequestBody Comunidade comunidade) {
-        return repository.save(comunidade);
+        return service.criar(comunidade);
     }
 
     @PutMapping("/{id}")
     public Comunidade atualizar(@PathVariable Long id, @RequestBody Comunidade nova) {
-        return repository.findById(id).map(c -> {
-            c.setNome(nova.getNome());
-            c.setDescricao(nova.getDescricao());
-            return repository.save(c);
-        }).orElseThrow();
+        return service.atualizar(id, nova);
     }
 
     @DeleteMapping("/{id}")
     public void deletar(@PathVariable Long id) {
-        repository.deleteById(id);
+        service.deletar(id);
     }
 }
