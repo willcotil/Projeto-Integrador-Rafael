@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a27901a-03ea-40a2-92da-dd27671485ca" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/java/src/main/java/com/backendpi/backend/service/ComentarioService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java/src/main/java/com/backendpi/backend/service/ComunidadeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java/src/main/java/com/backendpi/backend/service/VotoComentarioService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/main/java/com/backendpi/backend/controller/ComentarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/main/java/com/backendpi/backend/controller/ComentarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/main/java/com/backendpi/backend/model/Comentario.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/main/java/com/backendpi/backend/model/Comentario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/main/java/com/backendpi/backend/model/VotoComentario.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/main/java/com/backendpi/backend/model/VotoComentario.java" afterDir="false" />
-    </list>
+    <list default="true" id="4a27901a-03ea-40a2-92da-dd27671485ca" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
