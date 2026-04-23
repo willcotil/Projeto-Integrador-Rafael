@@ -1,7 +1,7 @@
 package com.backendpi.backend.controller;
 
 import com.backendpi.backend.model.VotoComentario;
-import com.backendpi.backend.repository.VotoComentarioRepository;
+import com.backendpi.backend.service.VotoComentarioService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,24 +10,24 @@ import java.util.List;
 @RequestMapping("/votos-comentario")
 public class VotoComentarioController {
 
-    private final VotoComentarioRepository repository;
+    private final VotoComentarioService service;
 
-    public VotoComentarioController(VotoComentarioRepository repository) {
-        this.repository = repository;
+    public VotoComentarioController(VotoComentarioService service) {
+        this.service = service;
     }
 
     @GetMapping
     public List<VotoComentario> listar() {
-        return repository.findAll();
+        return service.listar();
     }
 
     @PostMapping
     public VotoComentario criar(@RequestBody VotoComentario voto) {
-        return repository.save(voto);
+        return service.criar(voto);
     }
 
     @DeleteMapping("/{id}")
     public void deletar(@PathVariable Long id) {
-        repository.deleteById(id);
+        service.deletar(id);
     }
 }

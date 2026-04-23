@@ -11,9 +11,7 @@ public class VotoComentario {
     private Long id;
 
     private Long usuarioId;
-
     private Long comentarioId;
-
     private Boolean positivo;
 
     public Long getId() { return id; }

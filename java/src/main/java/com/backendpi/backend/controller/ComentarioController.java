@@ -1,7 +1,7 @@
 package com.backendpi.backend.controller;
 
 import com.backendpi.backend.model.Comentario;
-import com.backendpi.backend.repository.ComentarioRepository;
+import com.backendpi.backend.service.ComentarioService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,34 +10,29 @@ import java.util.List;
 @RequestMapping("/comentarios")
 public class ComentarioController {
 
-    private final ComentarioRepository repository;
+    private final ComentarioService service;
 
-    public ComentarioController(ComentarioRepository repository) {
-        this.repository = repository;
+    public ComentarioController(ComentarioService service) {
+        this.service = service;
     }
 
     @GetMapping
     public List<Comentario> listar() {
-        return repository.findAll();
+        return service.listar();
     }
 
     @PostMapping
     public Comentario criar(@RequestBody Comentario comentario) {
-        return repository.save(comentario);
+        return service.criar(comentario);
     }
 
     @PutMapping("/{id}")
     public Comentario atualizar(@PathVariable Long id, @RequestBody Comentario novo) {
-        return repository.findById(id).map(c -> {
-            c.setConteudo(novo.getConteudo());
-            c.setUsuarioId(novo.getUsuarioId());
-            c.setPostId(novo.getPostId());
-            return repository.save(c);
-        }).orElseThrow();
+        return service.atualizar(id, novo);
     }
 
     @DeleteMapping("/{id}")
     public void deletar(@PathVariable Long id) {
-        repository.deleteById(id);
+        service.deletar(id);
     }
 }
